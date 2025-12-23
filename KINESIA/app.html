@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base href="./">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KINESIA - Dashboard des consultations">
+  <meta name="theme-color" content="#0EA5E9">
+  
+  <title>Dashboard - KINESIA</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  
+  <style>
+    /* Layout avec sidebar comme MEETIA */
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--bg-secondary);
+    }
+    
+    .app-layout {
+      display: flex;
+      height: 100vh;
+    }
+    
+    /* SIDEBAR */
+    .sidebar {
+      width: 260px;
+      background: white;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-lg);
+    }
+    
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .sidebar-logo svg {
+      width: 40px;
+      height: 40px;
+      padding: var(--space-sm);
+      background: var(--gradient-primary);
+      border-radius: var(--border-radius-lg);
+      stroke: white;
+    }
+    
+    .logo-text h1 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    
+    .logo-text p {
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    .sidebar-section {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .sidebar-section-title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sidebar-menu-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-bottom: var(--space-xs);
+      color: var(--text-primary);
+    }
+    
+    .sidebar-menu-item:hover {
+      background: var(--gradient-subtle);
+    }
+    
+    .sidebar-menu-item.active {
+      background: var(--gradient-primary);
+      color: white;
+    }
+    
+    .sidebar-menu-item svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .quota-card {
+      background: var(--gradient-subtle);
+      padding: var(--space-md);
+      border-radius: var(--border-radius-md);
+      margin-bottom: var(--space-md);
+    }
+    
+    .quota-title {
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .quota-value {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--primary);
+    }
+    
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .user-profile:hover {
+      background: var(--bg-secondary);
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--border-radius-full);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: var(--font-weight-semibold);
+    }
+    
+    .user-info {
+      flex: 1;
+    }
+    
+    .user-name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--text-primary);
+    }
+    
+    .user-email {
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+    }
+    
+    /* MAIN CONTENT */
+    .main-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-2xl);
+    }
+    
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .main-header h2 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+    
+    .header-greeting {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: var(--space-md);
+    }
+    
+    /* QUICK ACTIONS */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .quick-action-card {
+      background: white;
+      padding: var(--space-xl);
+      border-radius: var(--border-radius-xl);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      border: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    
+    .quick-action-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .quick-action-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--border-radius-lg);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    .quick-action-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .quick-action-text h3 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .quick-action-text p {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+    
+    /* CONSULTATIONS SECTION */
+    .consultations-section {
+      background: white;
+      border-radius: var(--border-radius-xl);
+      padding: var(--space-xl);
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .section-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+    }
+    
+    .filters-bar {
+      display: flex;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .filters-bar .search-bar {
+      flex: 1;
+    }
+    
+    .filters-bar select {
+      min-width: 180px;
+    }
+    
+    .consultations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-lg);
+    }
+    
+    .consultation-card {
+      background: var(--bg-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      border: 2px solid transparent;
+    }
+    
+    .consultation-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .consultation-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: var(--border-radius-lg);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+    }
+    
+    .consultation-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+    }
+    
+    .consultation-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .consultation-meta {
+      display: flex;
+      gap: var(--space-md);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+    
+    .consultation-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: var(--space-3xl);
+    }
+    
+    .empty-icon {
+      font-size: 64px;
+      margin-bottom: var(--space-lg);
+    }
+  </style>
+  
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
+          <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
+          <circle cx="20" cy="10" r="2"></circle>
+        </svg>
+        <div class="logo-text">
+          <h1>KINESIA</h1>
+          <p>Smart Consultations</p>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">MENU PRINCIPAL</div>
+        <div class="sidebar-menu-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Dashboard
+        </div>
+        <div class="sidebar-menu-item" onclick="location.reload()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path>
+            <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path>
+            <circle cx="20" cy="10" r="2"></circle>
+          </svg>
+          Mes Consultations
+        </div>
+        <div class="sidebar-menu-item" onclick="window.location.href='/knowledge-base.html'">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Base de Connaissances
+        </div>
+        <div class="sidebar-menu-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Recherche
+        </div>
+      </div>
+      
+      <div class="sidebar-footer">
+        <div class="quota-card">
+          <div class="quota-title">Quota ce mois</div>
+          <div class="quota-value" id="quotaDisplay">Illimité</div>
+          <div class="quota-title" style="margin-top: 4px;">Free</div>
+        </div>
+        
+        <div class="user-profile" onclick="showUserMenu()">
+          <div class="user-avatar" id="userAvatarSidebar">U</div>
+          <div class="user-info">
+            <div class="user-name" id="userNameDisplay">Utilisateur</div>
+            <div class="user-email" id="userEmailDisplay"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b7e786e794b6e736a667b676e25686466">[email&#160;protected]</a></div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="main-header">
+        <div>
+          <div class="header-greeting">Bonjour <span id="userFirstName">Andrea</span> 👋</div>
+          <h2>Dashboard</h2>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-ghost btn-icon" title="Notifications">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+          <button class="btn btn-ghost btn-icon" title="Aide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </button>
+          <button class="btn btn-primary" onclick="signOut()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Déconnexion
+          </button>
+        </div>
+      </div>
+      
+      <!-- QUICK ACTIONS -->
+      <div class="quick-actions" style="grid-template-columns: 1fr; max-width: 600px;">
+        <div class="quick-action-card" onclick="window.location.href='/new-consultation.html'">
+          <div class="quick-action-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+          <div class="quick-action-text">
+            <h3>Nouvelle Consultation</h3>
+            <p>Enregistrer ou importer une consultation audio</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CONSULTATIONS SECTION -->
+      <div class="consultations-section">
+        <div class="section-header">
+          <h3 class="section-title">Consultations Récentes</h3>
+          <button class="btn btn-ghost btn-sm" onclick="loadConsultations()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            Actualiser
+          </button>
+        </div>
+        
+        <div class="filters-bar">
+          <div class="search-bar">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchConsultations" placeholder="Rechercher une consultation...">
+          </div>
+          <select id="filterType" class="input" onchange="applyFilters()">
+            <option value="">Tous les types</option>
+            <option value="Première consultation">Première consultation</option>
+            <option value="Suivi">Suivi</option>
+            <option value="Bilan">Bilan</option>
+            <option value="Urgence">Urgence</option>
+          </select>
+          <select id="filterStatus" class="input" onchange="applyFilters()">
+            <option value="">Tous les statuts</option>
+            <option value="uploaded">Uploadé</option>
+            <option value="processing">En cours</option>
+            <option value="completed">Terminé</option>
+            <option value="error">Erreur</option>
+          </select>
+        </div>
+        
+        <div class="consultations-grid" id="consultationsGrid">
+          <!-- Loading -->
+          <div style="text-align: center; padding: 40px;">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Scripts -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/consultations.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    // Fonction pour afficher le modal upload - REDIRIGE VERS new-consultation.html
+    function showUploadModal() {
+      window.location.href = '/new-consultation.html';
+    }
+    
+    // Fonction pour nouvelle consultation
+    function showNewConsultationModal() {
+      window.location.href = '/new-consultation.html';
+    }
+    
+    // Fonction pour afficher menu utilisateur
+    function showUserMenu() {
+      if(confirm('Se déconnecter ?')) {
+        signOut();
+      }
+    }
+  </script>
+</body>
+</html>
