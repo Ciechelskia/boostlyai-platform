@@ -50,6 +50,19 @@ class AppManager {
         // Gérer la session Supabase
         await this.checkSession();
 
+        // Forcer un refresh quand l'utilisateur revient sur l'onglet (après mise en veille)
+        document.addEventListener('visibilitychange', async () => {
+            if (!document.hidden) {
+                console.log('🔄 Retour sur la page, refresh du token...');
+                const { data, error } = await window.supabaseClient.auth.refreshSession();
+                if (error) {
+                    console.error('❌ Erreur refresh au retour:', error);
+                } else {
+                    console.log('✅ Token rafraîchi au retour sur la page');
+                }
+            }
+        });
+
         // Bind des événements
         this.bindEvents();
 
@@ -91,16 +104,6 @@ class AppManager {
                 this.handleLogout();
             }
         });
-
-        // Forcer un refresh de session toutes les 30 minutes pour éviter les timeouts
-        setInterval(async () => {
-            const { data, error } = await window.supabaseClient.auth.refreshSession();
-            if (error) {
-                console.error('❌ Erreur refresh session:', error);
-            } else {
-                console.log('✅ Session rafraîchie manuellement');
-            }
-        }, 30 * 60 * 1000); // 30 minutes
     }
 
     // === BIND DES ÉVÉNEMENTS ===
