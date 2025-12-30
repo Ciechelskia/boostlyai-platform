@@ -3,15 +3,6 @@
 // VERSION AVEC DEBUG MAXIMUM POUR ERREUR 400
 // ============================================
 
-// ✅ CONFIGURATION STRIPE (HARDCODÉE POUR ÉVITER LES PROBLÈMES DE CHARGEMENT)
-const STRIPE_CONFIG_FALLBACK = {
-    publishableKey: 'pk_test_51SIkhuFzGIz9kApxKwFOq3UJWUQyAyBJQTiXom8u8ufV61xgiZwnunKwXXfc8Qe2UCdO5eTd1WQPqAmOxHpav3Tk00GYxSsCJ1',
-    PRICE_ID: 'price_1SJ2PdFzGIz9kApxnVFvWAsa',
-    priceId: 'price_1SJ2PdFzGIz9kApxnVFvWAsa',
-    successUrl: 'https://vocalia-app.netlify.app/pages/success.html?session_id={CHECKOUT_SESSION_ID}',
-    cancelUrl: 'https://vocalia-app.netlify.app/pages/cancel.html'
-};
-
 class ProfileManager {
     constructor(appManager) {
         this.appManager = appManager;
@@ -434,13 +425,18 @@ class ProfileManager {
             console.log('========== DÉBUT CRÉATION SESSION STRIPE ==========');
             console.log('🚀 Création de la session Stripe...');
             
-            // ✅ CORRECTION : Utiliser la config hardcodée
-            const config = window.STRIPE_CONFIG || STRIPE_CONFIG_FALLBACK;
+            // ✅ Utiliser window.STRIPE_CONFIG (chargé depuis stripe-config.js)
+            const config = window.STRIPE_CONFIG;
+            
+            if (!config) {
+                throw new Error('❌ STRIPE_CONFIG non chargé. Vérifiez que stripe-config.js est bien chargé.');
+            }
+            
             const priceId = config.PRICE_ID || config.priceId;
             const successUrl = config.successUrl;
             const cancelUrl = config.cancelUrl;
             
-            console.log('📊 Config Stripe utilisée:', {
+            console.log('📊 Config Stripe:', {
                 priceId: priceId,
                 successUrl: successUrl,
                 cancelUrl: cancelUrl
@@ -482,7 +478,7 @@ class ProfileManager {
                 throw new Error(response.data.error);
             }
 
-            // ✅ CORRECTION : Utiliser l'URL retournée par Stripe
+            // ✅ UTILISER L'URL retournée par Stripe (pas construire manuellement)
             if (!response.data || !response.data.url) {
                 console.error('========== PAS D\'URL STRIPE ==========');
                 console.error('❌ response.data:', response.data);
@@ -491,11 +487,9 @@ class ProfileManager {
 
             // Succès !
             console.log('========== SUCCÈS ==========');
-            console.log('✅ Session ID reçue:', response.data.sessionId);
-            console.log('✅ URL Stripe reçue:', response.data.url);
+            console.log('✅ Session ID:', response.data.sessionId);
+            console.log('✅ URL Stripe:', response.data.url);
             console.log('✅ Redirection vers Stripe Checkout...');
-            
-            // Rediriger vers l'URL Stripe
             window.location.href = response.data.url;
 
         } catch (error) {
