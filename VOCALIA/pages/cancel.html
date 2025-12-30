@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement annulé - VOCALIA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B1538;
+            --accent: #F59E0B;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #8B1538 0%, #FF6F00 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .cancel-container {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cancel-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.05), rgba(255, 111, 0, 0.05));
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            font-size: 15px;
+            color: var(--gray-700);
+            border: 2px solid rgba(139, 21, 56, 0.1);
+            line-height: 1.6;
+        }
+
+        .price-reminder {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 21, 56, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-200);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            .cancel-container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .cancel-icon {
+                font-size: 80px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cancel-container">
+        <div class="cancel-icon">😔</div>
+        <h1>Paiement annulé</h1>
+        <p class="subtitle">
+            Vous avez annulé le processus de paiement.<br>
+            Aucun montant n'a été débité de votre compte.
+        </p>
+
+        <div class="info-box">
+            💡 <strong>Vous pouvez réessayer à tout moment !</strong><br><br>
+            Le plan PRO reste disponible depuis votre profil pour débloquer :
+            <ul style="text-align: left; margin: 15px 0 0 20px; line-height: 1.8;">
+                <li>Rapports illimités</li>
+                <li>Appareils illimités</li>
+                <li>Traduction 6 langues</li>
+                <li>Support prioritaire 24/7</li>
+            </ul>
+        </div>
+
+        <div class="price-reminder">14,99€ / mois</div>
+
+        <div class="btn-group">
+            <button onclick="goToApp()" class="btn btn-secondary">
+                ← Retour à l'app
+            </button>
+            <button onclick="retryUpgrade()" class="btn btn-primary">
+                🚀 Réessayer
+            </button>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ Page cancel.html chargée');
+        
+        // Fonction pour retourner à l'app - VERSION SIMPLIFIÉE SANS SUPABASE
+        function goToApp() {
+            console.log('🔄 Redirection vers app.html');
+            window.location.href = '../app.html';
+        }
+        
+        // Fonction pour réessayer l'upgrade - VERSION SIMPLIFIÉE SANS SUPABASE
+        function retryUpgrade() {
+            console.log('🔄 Redirection vers profil pour réessayer');
+            window.location.href = '../app.html';
+        }
+    </script>
+</body>
+</html>

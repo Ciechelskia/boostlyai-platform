@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement réussi - VOCALIA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B1538;
+            --accent: #F59E0B;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
+            --success: #22C55E;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #8B1538 0%, #FF6F00 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-container {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: bounce 0.8s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.05), rgba(255, 111, 0, 0.05));
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            text-align: left;
+            border: 2px solid rgba(139, 21, 56, 0.1);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 21, 56, 0.4);
+        }
+
+        .loading {
+            color: var(--primary);
+            font-size: 14px;
+            margin-top: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(139, 21, 56, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #FEE2E2;
+            color: #DC2626;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .success-container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .success-icon {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">🎉</div>
+        <h1>Bienvenue dans le plan PRO !</h1>
+        <p class="subtitle">
+            Votre paiement a été confirmé avec succès.<br>
+            Vous avez maintenant accès à toutes les fonctionnalités premium.
+        </p>
+
+        <div class="features">
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span><strong>Rapports illimités</strong> - Créez autant de rapports que vous voulez</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span><strong>Appareils illimités</strong> - Connectez tous vos appareils</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span><strong>Traduction 6 langues</strong> - FR, EN, ZH, JA, ES, DE</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✅</span>
+                <span><strong>Support prioritaire 24/7</strong> - Assistance dédiée</span>
+            </div>
+        </div>
+
+        <a href="../app.html" class="btn" id="returnBtn" style="pointer-events: none; opacity: 0.6;">
+            🚀 Retour à l'application
+        </a>
+
+        <p class="loading" id="loadingMessage">
+            <span class="spinner"></span>
+            <span id="loadingText">Mise à jour de votre compte en cours...</span>
+        </p>
+
+        <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script>
+        console.log('✅ Page success.html chargée');
+        
+        const SUPABASE_URL = 'https://alsyhwaplkwmwddirxwu.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsc3lod2FwbGt3bXdkZGlyeHd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMzAxODQsImV4cCI6MjA3NTYwNjE4NH0.JeslV19KvDdkgPfseejfrJB_hExec936zaGemAhqU4w';
+        
+        let supabaseClient = null;
+        
+        function initializeSupabase() {
+            try {
+                if (typeof window.supabase === 'undefined' || typeof window.supabase.createClient !== 'function') {
+                    throw new Error('Librairie Supabase non disponible');
+                }
+                
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                console.log('✅ Supabase initialisé');
+                return true;
+            } catch (error) {
+                console.error('❌ Erreur initialisation Supabase:', error);
+                showError('Erreur d\'initialisation. Veuillez rafraîchir la page.');
+                return false;
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startProcess);
+        } else {
+            startProcess();
+        }
+        
+        function startProcess() {
+            if (!initializeSupabase()) return;
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            let sessionId = urlParams.get('session_id');
+            
+            if (!sessionId) {
+                console.error('❌ Pas de session_id dans l\'URL');
+                showError('Session Stripe introuvable. Contactez le support.');
+                return;
+            }
+            
+            // ✅ CORRECTION : Nettoyer le sessionId si dupliqué
+            if (sessionId.includes('?session_id=')) {
+                const cleanSessionId = sessionId.split('?session_id=')[0];
+                console.log('⚠️ SessionId dupliqué détecté, nettoyage...');
+                console.log('📋 Avant nettoyage:', sessionId);
+                sessionId = cleanSessionId;
+                console.log('📋 Après nettoyage:', sessionId);
+            }
+            
+            console.log('📋 Session ID FINAL - Longueur:', sessionId.length);
+            console.log('📋 Session ID FINAL:', sessionId);
+            
+            confirmPayment(sessionId);
+        }
+        
+        async function confirmPayment(sessionId) {
+            try {
+                console.log('🔄 Confirmation du paiement en cours...');
+                
+                if (!supabaseClient) {
+                    throw new Error('Supabase non initialisé');
+                }
+                
+                const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+                
+                if (sessionError || !session) {
+                    throw new Error('Session utilisateur non trouvée. Veuillez vous reconnecter.');
+                }
+                
+                const userId = session.user.id;
+                console.log('👤 User ID:', userId);
+                
+                // ✅ SOLUTION FINALE : Envoyer en POST avec body JSON simple
+                console.log('📤 Envoi POST direct sans validation Supabase...');
+                
+                const response = await fetch(
+                    `${SUPABASE_URL}/functions/v1/confirm-payment`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                        },
+                        body: JSON.stringify({
+                            session_id: sessionId,
+                            user_id: userId
+                        })
+                    }
+                );
+                
+                console.log('📥 Réponse HTTP status:', response.status);
+                
+                const data = await response.json();
+                console.log('📥 Réponse données:', data);
+                
+                if (!response.ok) {
+                    console.error('❌ Erreur API:', data);
+                    throw new Error(data.error || 'Erreur lors de la confirmation du paiement');
+                }
+                
+                console.log('✅ Paiement confirmé:', data);
+                
+                sessionStorage.setItem('stripe_payment_success', 'true');
+                sessionStorage.setItem('stripe_session_id', sessionId);
+                
+                document.getElementById('loadingText').textContent = '✅ Compte mis à jour avec succès !';
+                
+                const returnBtn = document.getElementById('returnBtn');
+                returnBtn.style.pointerEvents = 'auto';
+                returnBtn.style.opacity = '1';
+                
+                setTimeout(() => {
+                    console.log('⏰ Redirection vers app.html');
+                    window.location.replace('../app.html');
+                }, 2000);
+                
+            } catch (error) {
+                console.error('❌ Erreur confirmation paiement:', error);
+                showError(error.message);
+                
+                const returnBtn = document.getElementById('returnBtn');
+                returnBtn.style.pointerEvents = 'auto';
+                returnBtn.style.opacity = '1';
+            }
+        }
+        
+        function showError(message) {
+            document.getElementById('loadingMessage').style.display = 'none';
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

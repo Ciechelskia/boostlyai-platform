@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="register.title">Inscription - VOCALIA</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8B1538">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <!-- LOGO VOCALIA -->
+        <div class="register-logo">
+            <div class="logo-icon">📋</div>
+            <h1 class="logo-text">VOCALIA</h1>
+            <p class="logo-subtitle" data-i18n="register.tagline">Créez votre compte gratuitement</p>
+        </div>
+
+        <!-- SÉLECTEUR DE LANGUE -->
+        <div class="register-language-selector" id="registerLanguageSelector"></div>
+
+        <!-- FORMULAIRE D'INSCRIPTION -->
+        <form id="registerForm" class="register-form">
+            <!-- Prénom -->
+            <div class="form-group">
+                <label for="firstName" data-i18n="register.firstname">👤 Prénom</label>
+                <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName" 
+                    required 
+                    autocomplete="given-name"
+                    data-i18n-placeholder="register.firstname.placeholder"
+                    placeholder="Jean"
+                >
+            </div>
+
+            <!-- Nom -->
+            <div class="form-group">
+                <label for="lastName" data-i18n="register.lastname">👤 Nom</label>
+                <input 
+                    type="text" 
+                    id="lastName" 
+                    name="lastName" 
+                    required 
+                    autocomplete="family-name"
+                    data-i18n-placeholder="register.lastname.placeholder"
+                    placeholder="Dupont"
+                >
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email" data-i18n="register.email">📧 Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    autocomplete="email"
+                    data-i18n-placeholder="register.email.placeholder"
+                    placeholder="jean.dupont@example.com"
+                >
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="form-group">
+                <label for="password" data-i18n="register.password">🔒 Mot de passe</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    autocomplete="new-password"
+                    data-i18n-placeholder="register.password.placeholder"
+                    placeholder="••••••••"
+                >
+                <div class="password-strength" id="passwordStrength"></div>
+                <small class="form-hint" data-i18n="register.password.hint">Minimum 8 caractères</small>
+            </div>
+
+            <!-- Confirmation mot de passe -->
+            <div class="form-group">
+                <label for="confirmPassword" data-i18n="register.confirm">🔒 Confirmer le mot de passe</label>
+                <input 
+                    type="password" 
+                    id="confirmPassword" 
+                    name="confirmPassword" 
+                    required 
+                    autocomplete="new-password"
+                    data-i18n-placeholder="register.confirm.placeholder"
+                    placeholder="••••••••"
+                >
+            </div>
+
+            <!-- CGU - TEXTE EN DUR FRANÇAIS -->
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <span>
+                        J'accepte les 
+                        <a href="#" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">conditions d'utilisation</a> 
+                        et la 
+                        <a href="#" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">politique de confidentialité</a>
+                    </span>
+                </label>
+            </div>
+
+            <!-- Messages d'erreur -->
+            <div class="error-message" id="errorMessage"></div>
+
+            <!-- Loading -->
+            <div class="loading" id="loadingMessage">
+                <div class="loading-spinner"></div>
+                <span data-i18n="register.loading">Création du compte...</span>
+            </div>
+
+            <!-- Bouton inscription -->
+            <button type="submit" class="register-btn" id="registerBtn" data-i18n="register.button">
+                📝 Créer mon compte gratuit
+            </button>
+        </form>
+
+        <!-- Lien vers connexion -->
+        <div class="login-link">
+            <span data-i18n="register.already">Vous avez déjà un compte ?</span>
+            <a href="app.html" data-i18n="register.login">Se connecter</a>
+        </div>
+
+        <!-- Plan gratuit info -->
+        <div class="free-plan-info">
+            <div class="info-icon">✨</div>
+            <div class="info-content">
+                <h3 data-i18n="register.free.title">Plan Gratuit inclus</h3>
+                <ul>
+                    <li data-i18n="register.free.feature1">✅ 5 rapports par mois</li>
+                    <li data-i18n="register.free.feature2">✅ 2 appareils maximum</li>
+                    <li data-i18n="register.free.feature3">✅ Transcription IA</li>
+                    <li data-i18n="register.free.feature4">✅ PDF automatique</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- 1. Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3/dist/umd/supabase.min.js"></script>
+    
+    <!-- 2. Config Supabase -->
+    <script src="js/supabase-config.js"></script>
+    
+    <!-- 3. Traductions -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-manager.js"></script>
+    
+    <!-- 4. Utilitaires -->
+    <script src="js/utils.js"></script>
+    
+    <!-- 5. Script d'inscription -->
+    <script src="js/register.js"></script>
+</body>
+</html>

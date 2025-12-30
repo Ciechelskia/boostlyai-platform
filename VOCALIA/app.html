@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="app.title">Rapports Commerciaux</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2196F3">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header" id="header">
+            <!-- LOGO VOCALIA avec dégradé -->
+            <div class="app-logo">
+                <span class="logo-text">VOCALIA</span>
+            </div>
+            
+            <div class="user-info">
+                <div class="avatar" id="userAvatar">U</div>
+                <div>
+                    <div id="userName">Utilisateur</div>
+                    <div class="user-role" id="userRole">Commercial</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn" id="navBrouillon" data-i18n="nav.drafts">📝 Brouillons</button>
+                <button class="nav-btn" id="navRapports" data-i18n="nav.reports">📊 Rapports</button>
+                <button class="nav-btn" id="navProfil" data-i18n="nav.profile">👤 Profil</button>
+                
+                <!-- SÉLECTEUR DE LANGUE -->
+                <div id="languageSelectorContainer"></div>
+                
+                <button class="nav-btn logout" id="logoutBtn" data-i18n="nav.logout">🚪</button>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="mainContent">
+            
+            <!-- PAGE LOGIN -->
+            <div class="page login-page" id="loginPage" style="display: block;">
+                <!-- SÉLECTEUR DE LANGUE SUR LA PAGE LOGIN -->
+                <div class="login-language-selector" id="loginLanguageSelector"></div>
+                
+                <div class="logo">🏢</div>
+                <div class="brand-tagline">
+                    <h1 data-i18n="login.title">Connexion</h1>
+                    <p class="tagline" data-i18n="login.tagline">Du code et de l'IA pour donner vie à vos rapports</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username" data-i18n="login.username">👤 Email</label>
+                        <input type="text" id="username" name="username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" data-i18n="login.password">🔒 Mot de passe</label>
+                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="login-btn" id="loginBtn" data-i18n="login.button">Se connecter</button>
+                    
+                    <!-- NOUVEAU : Lien vers inscription -->
+                    <div class="register-link" style="text-align: center; margin-top: 20px; font-size: 14px; color: #666;">
+                        <span data-i18n="login.no.account">Pas encore de compte ?</span>
+                        <a href="register.html" style="color: var(--primary); text-decoration: none; font-weight: 600; margin-left: 5px;" data-i18n="login.create.account">Créer un compte gratuit</a>
+                    </div>
+                    
+                    <div class="error-message" id="errorMessage"></div>
+                    <div class="loading" id="loadingMessage">
+                        <div class="loading-spinner"></div>
+                        <span data-i18n="login.loading">Connexion en cours...</span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- PAGE BROUILLON -->
+            <div class="page" id="brouillonPage" style="display: none;">
+                <h1 data-i18n="drafts.title">📝 Brouillons</h1>
+                
+                <!-- Section Enregistrement -->
+                <div class="recording-section">
+                    <h3 data-i18n="drafts.create">🎤 Créer un nouveau rapport</h3>
+                    
+                    <!-- Options d'ajout -->
+                    <div class="input-options">
+                        <div class="option-group">
+                            <h4 data-i18n="drafts.record">Enregistrer un vocal</h4>
+                            <div class="record-button" id="recordBtn">⏺️</div>
+                            <div id="recordingStatus" data-i18n="drafts.record.button">Appuyer pour enregistrer</div>
+                            
+                            <div class="audio-controls" id="audioControls">
+                                <button class="audio-btn" id="playBtn" data-i18n="drafts.record.play">▶️ Écouter</button>
+                                <button class="audio-btn" id="reRecordBtn" data-i18n="drafts.record.redo">🔄 Refaire</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-divider" data-i18n="drafts.or">OU</div>
+                        
+                        <div class="option-group">
+                            <h4 data-i18n="drafts.upload">Importer un fichier audio</h4>
+                            <input type="file" id="audioFileInput" accept="audio/*" style="display: none;">
+                            <button class="upload-btn" id="uploadBtn" data-i18n="drafts.upload.button">📁 Choisir un fichier</button>
+                            <div id="uploadStatus"></div>
+                        </div>
+                    </div>
+                    
+                    <button class="send-btn" id="sendAudioBtn" data-i18n="drafts.send">📤 Envoyer pour traitement</button>
+                </div>
+
+                <!-- Liste des brouillons -->
+                <div>
+                    <h3 data-i18n="drafts.list.title">📋 Rapports en attente de validation :</h3>
+                    <div class="reports-list" id="brouillonsList">
+                        <div class="empty-state">
+                            <div class="icon">📄</div>
+                            <p data-i18n="drafts.empty">Aucun brouillon pour le moment</p>
+                            <p class="empty-subtitle" data-i18n="drafts.empty.subtitle">Enregistrez ou importez votre premier rapport vocal !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE RAPPORTS -->
+            <div class="page" id="rapportsPage" style="display: none;">
+                <h1 data-i18n="reports.title">📊 Rapports finalisés</h1>
+                
+                <!-- Section Recherche -->
+                <div class="search-section">
+                    <input type="text" class="search-input" id="searchInput" data-i18n-placeholder="reports.search" placeholder="🔍 Rechercher un rapport...">
+                </div>
+
+                <!-- Stats avec bouton créer dossier -->
+                <div class="stats-section" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+                        <span><span data-i18n="reports.stats" data-i18n-params='{"count":""}'>✅ Rapports validés :</span> <span id="rapportsCount">0</span></span>
+                        <span><span data-i18n="reports.stats.pdf" data-i18n-params='{"count":""}'>📄 PDF générés :</span> <span id="pdfCount">0</span></span>
+                    </div>
+                    <button class="action-btn" id="createFolderBtnTop" style="background: var(--gradient-main); color: white; padding: 10px 20px; border-radius: 20px; font-weight: 600; font-size: 13px; box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3); transition: all 0.3s ease;" 
+                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 15px rgba(37, 99, 235, 0.4)';" 
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(37, 99, 235, 0.3)';"
+                            onclick="window.dataManager.showCreateFolderModal()">
+                        ➕ <span data-i18n="folder.create.button">Créer un dossier</span>
+                    </button>
+                </div>
+
+                <!-- Liste des rapports -->
+                <div class="reports-list" id="rapportsList">
+                    <div class="empty-state">
+                        <div class="icon">📋</div>
+                        <p data-i18n="reports.empty">Aucun rapport finalisé</p>
+                        <p class="empty-subtitle" data-i18n="reports.empty.subtitle">Validez vos brouillons pour les voir ici !</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 👤 PAGE PROFIL - VERSION CORRIGÉE -->
+            <div id="profilPage" class="page-content" style="display: none;">
+                <div class="page-header">
+                    <h2 data-i18n="profile.title">Mon Profil</h2>
+                </div>
+
+                <!-- Informations personnelles -->
+                <div class="profile-section">
+                    <h3 data-i18n="profile.info">Informations personnelles</h3>
+                    
+                    <div class="form-group">
+                        <label data-i18n="profile.firstname">Prénom</label>
+                        <input type="text" id="profileFirstName" class="input-field" placeholder="Jean">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-i18n="profile.lastname">Nom</label>
+                        <input type="text" id="profileLastName" class="input-field" placeholder="Dupont">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-i18n="profile.email">Email</label>
+                        <input type="email" id="profileEmail" class="input-field" placeholder="jean.dupont@example.com" readonly>
+                    </div>
+                    
+                    <button id="saveProfileBtn" class="btn-primary" onclick="window.appManager.profileManager.saveProfile()" style="margin-top: 20px;">
+                        💾 <span data-i18n="profile.save">Sauvegarder</span>
+                    </button>
+                </div>
+
+                <!-- Mon abonnement -->
+                <div class="profile-section">
+                    <h3 data-i18n="profile.subscription">Mon abonnement</h3>
+                    
+                    <div id="planBadge" class="plan-badge free">FREE</div>
+                    <div id="planDate" style="margin: 15px 0; color: var(--gray-600); font-size: 14px;">Membre depuis...</div>
+                    
+                    <!-- Compteur rapports -->
+                    <div style="margin: 20px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-weight: 600; color: var(--gray-800);" data-i18n="profile.reports.month">Rapports ce mois</span>
+                            <span style="font-weight: 700; font-size: 18px; color: var(--success);">
+                                <span id="reportsCountProfile">0</span>/<span id="reportsLimitProfile">5</span>
+                            </span>
+                        </div>
+                        
+                        <!-- Barre de progression -->
+                        <div style="width: 100%; height: 12px; background: var(--gray-200); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">
+                            <div id="reportsProgressBar" style="
+                                width: 0%; 
+                                height: 100%; 
+                                background: linear-gradient(90deg, #8B1538, #F59E0B); 
+                                transition: all 0.3s ease;
+                                border-radius: 10px;
+                            "></div>
+                        </div>
+                    </div>
+                    
+                    <!-- ✅ CONTENEUR POUR LA DATE DU PROCHAIN RESET -->
+                    <div id="nextResetInfo"></div>
+                    
+                    <!-- ✅ BOUTON UPGRADE (pour utilisateurs FREE) -->
+                    <button id="upgradeBtn" class="btn-primary" onclick="window.appManager.profileManager.handleUpgrade()" style="
+                        width: 100%; 
+                        margin-top: 20px; 
+                        padding: 14px; 
+                        background: linear-gradient(135deg, var(--primary), #FF6F00); 
+                        color: white; 
+                        border: none; 
+                        border-radius: 12px; 
+                        font-weight: 700; 
+                        cursor: pointer;
+                        font-size: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(139, 21, 56, 0.3);
+                    ">
+                        ✨ <span data-i18n="profile.upgrade">Passer au plan PRO</span>
+                    </button>
+                    
+                    <!-- ✅ NOUVEAU : BOUTON ANNULER (pour utilisateurs PRO) -->
+                    <button id="cancelSubscriptionBtn" class="btn-danger" onclick="window.appManager.profileManager.cancelSubscription()" style="
+                        width: 100%; 
+                        margin-top: 20px; 
+                        padding: 14px; 
+                        background: linear-gradient(135deg, #DC2626, #991B1B); 
+                        color: white; 
+                        border: none; 
+                        border-radius: 12px; 
+                        font-weight: 700; 
+                        cursor: pointer;
+                        font-size: 15px;
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+                    ">
+                        🚫 <span data-i18n="profile.cancel">Annuler l'abonnement</span>
+                    </button>
+                </div>
+
+                <!-- Appareils connectés -->
+                <div class="profile-section">
+                    <h3 data-i18n="profile.devices">Appareils connectés</h3>
+                    <div id="devicesList"></div>
+                </div>
+
+                <!-- Bouton supprimer le compte -->
+                <div class="profile-section">
+                    <button id="deleteAccountBtn" onclick="window.appManager.profileManager.deleteAccount()">
+                        Supprimer mon compte
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS - ORDRE IMPORTANT ! -->
+    <!-- ============================================ -->
+    
+    <!-- 1. Supabase Client Library (DOIT ÊTRE EN PREMIER) -->
+    <script src="js/supabase.min.js"></script>
+    <script src="js/stripe-config.js"></script>
+    
+    <!-- 2. Configuration Supabase -->
+    <script src="js/supabase-config.js"></script>
+    
+    <!-- 3. Configuration de l'app -->
+    <script src="js/config.js"></script>
+    
+    <!-- 4. Système de traductions -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-manager.js"></script>
+    
+    <!-- 5. Utilitaires -->
+    <script src="js/utils.js"></script>
+    
+    <!-- 6. Managers de l'application -->
+    <script src="js/audio-manager.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/profile-manager.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- ============================================ -->
+    <!-- EFFETS VISUELS -->
+    <!-- ============================================ -->
+    
+    <!-- Effet de particules pour la page de connexion -->
+    <script>
+        // Effet de particules subtil pour la page de connexion
+        function createNetworkEffect() {
+            const loginPage = document.getElementById('loginPage');
+            if (!loginPage || loginPage.style.display === 'none') return;
+            
+            const particles = document.createElement('div');
+            particles.className = 'network-particles';
+            particles.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+            `;
+            
+            // Créer quelques particules subtiles
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    animation: particleFloat ${3 + Math.random() * 4}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 2}s;
+                `;
+                particles.appendChild(particle);
+            }
+            
+            loginPage.appendChild(particles);
+        }
+        
+        // Ajouter l'animation CSS pour les particules
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes particleFloat {
+                0%, 100% { 
+                    transform: translateY(0px) translateX(0px);
+                    opacity: 0.3;
+                }
+                50% { 
+                    transform: translateY(-20px) translateX(10px);
+                    opacity: 0.8;
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+        
+        // Initialiser l'effet au chargement
+        document.addEventListener('DOMContentLoaded', createNetworkEffect);
+    </script>
+
+    <!-- ============================================ -->
+    <!-- SERVICE WORKER (PWA) -->
+    <!-- ============================================ -->
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker enregistré');
+                    })
+                    .catch(err => {
+                        console.log('❌ Échec enregistrement Service Worker:', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
