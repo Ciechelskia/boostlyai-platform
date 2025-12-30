@@ -3,6 +3,15 @@
 // VERSION AVEC DEBUG MAXIMUM POUR ERREUR 400
 // ============================================
 
+// ✅ CONFIGURATION STRIPE (HARDCODÉE POUR ÉVITER LES PROBLÈMES DE CHARGEMENT)
+const STRIPE_CONFIG_FALLBACK = {
+    publishableKey: 'pk_test_51SIkhuFzGIz9kApxKwFOq3UJWUQyAyBJQTiXom8u8ufV61xgiZwnunKwXXfc8Qe2UCdO5eTd1WQPqAmOxHpav3Tk00GYxSsCJ1',
+    PRICE_ID: 'price_1SJ2PdFzGIz9kApxnVFvWAsa',
+    priceId: 'price_1SJ2PdFzGIz9kApxnVFvWAsa',
+    successUrl: 'https://vocalia-app.netlify.app/pages/success.html?session_id={CHECKOUT_SESSION_ID}',
+    cancelUrl: 'https://vocalia-app.netlify.app/pages/cancel.html'
+};
+
 class ProfileManager {
     constructor(appManager) {
         this.appManager = appManager;
@@ -425,10 +434,17 @@ class ProfileManager {
             console.log('========== DÉBUT CRÉATION SESSION STRIPE ==========');
             console.log('🚀 Création de la session Stripe...');
             
-            // ✅ CORRECTION : Envoyer les paramètres attendus par l'Edge Function
-            const priceId = window.STRIPE_CONFIG?.PRICE_ID || 'price_1QI5lqEuhOtEuBa0Xny7QrOt'; // Votre Price ID Stripe
-            const successUrl = `${window.location.origin}/app.html?status=success`;
-            const cancelUrl = `${window.location.origin}/app.html?status=cancel`;
+            // ✅ CORRECTION : Utiliser la config hardcodée
+            const config = window.STRIPE_CONFIG || STRIPE_CONFIG_FALLBACK;
+            const priceId = config.PRICE_ID || config.priceId;
+            const successUrl = config.successUrl;
+            const cancelUrl = config.cancelUrl;
+            
+            console.log('📊 Config Stripe utilisée:', {
+                priceId: priceId,
+                successUrl: successUrl,
+                cancelUrl: cancelUrl
+            });
             
             console.log('📊 Données envoyées:', {
                 userId: currentUser.id,
