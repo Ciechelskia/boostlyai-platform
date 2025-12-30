@@ -482,22 +482,21 @@ class ProfileManager {
                 throw new Error(response.data.error);
             }
 
-            // ✅ CORRECTION : L'Edge Function retourne sessionId, pas url
-            if (!response.data || !response.data.sessionId) {
-                console.error('========== PAS DE SESSION ID ==========');
+            // ✅ CORRECTION : Utiliser l'URL retournée par Stripe
+            if (!response.data || !response.data.url) {
+                console.error('========== PAS D\'URL STRIPE ==========');
                 console.error('❌ response.data:', response.data);
-                throw new Error('Session ID non reçue');
+                throw new Error('URL Stripe non reçue');
             }
-
-            // ✅ Construire l'URL Stripe Checkout manuellement
-            const checkoutUrl = `https://checkout.stripe.com/c/pay/${response.data.sessionId}`;
 
             // Succès !
             console.log('========== SUCCÈS ==========');
             console.log('✅ Session ID reçue:', response.data.sessionId);
-            console.log('✅ URL Checkout:', checkoutUrl);
+            console.log('✅ URL Stripe reçue:', response.data.url);
             console.log('✅ Redirection vers Stripe Checkout...');
-            window.location.href = checkoutUrl;
+            
+            // Rediriger vers l'URL Stripe
+            window.location.href = response.data.url;
 
         } catch (error) {
             console.error('========== ERREUR CATCH ==========');
