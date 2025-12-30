@@ -1165,14 +1165,19 @@ async confirmValidateBrouillon(brouillonId, selectedFolderId = null) {
         });
     }
 
-    handleCreateFolder(element) {
+    async handleCreateFolder(element) {
         const modal = element.closest('[data-modal]');
         const input = modal.querySelector('#newFolderName');
         const folderName = input.value.trim();
 
-        if (this.createFolder(folderName)) {
+        // ✅ CORRECTION : Attendre la création du dossier
+        const newFolder = await this.createFolder(folderName);
+        
+        if (newFolder) {
             modal.remove();
-            this.updateRapportsUI(this.getRapports());
+            // ✅ CORRECTION : Recharger l'UI pour afficher le nouveau dossier
+            const data = this.loadAppData();
+            this.updateRapportsUI(data.rapports);
         }
     }
 
