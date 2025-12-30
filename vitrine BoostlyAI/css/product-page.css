@@ -1,0 +1,540 @@
+/* =====================================================
+   BOOSTLY AI - PAGES PRODUITS
+   Styles pour Vocalia, Meetia, Kinésia
+   ===================================================== */
+
+/* ============ HERO PRODUIT ============ */
+.product-hero {
+    padding-top: 120px;
+    padding-bottom: var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-hero.vocalia {
+    background: linear-gradient(180deg, var(--vocalia-light) 0%, white 100%);
+}
+
+.product-hero.meetia {
+    background: linear-gradient(180deg, var(--meetia-light) 0%, white 100%);
+}
+
+.product-hero.kinesia {
+    background: linear-gradient(180deg, var(--kinesia-light) 0%, white 100%);
+}
+
+.product-hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.product-hero.vocalia::before {
+    background: radial-gradient(circle, var(--vocalia-primary) 0%, transparent 70%);
+}
+
+.product-hero.meetia::before {
+    background: radial-gradient(circle, var(--meetia-primary) 0%, transparent 70%);
+}
+
+.product-hero.kinesia::before {
+    background: radial-gradient(circle, var(--kinesia-primary) 0%, transparent 70%);
+}
+
+.product-hero-content {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.product-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.product-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.product-breadcrumb a {
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.product-breadcrumb a:hover {
+    color: var(--gray-900);
+}
+
+.product-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.product-logo-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.product-hero.vocalia .product-logo-icon {
+    background: var(--vocalia-light);
+}
+
+.product-hero.meetia .product-logo-icon {
+    background: var(--meetia-light);
+}
+
+.product-hero.kinesia .product-logo-icon {
+    background: var(--kinesia-light);
+}
+
+.product-name {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+}
+
+.product-hero-title {
+    font-size: var(--text-5xl);
+    font-weight: var(--font-extrabold);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--gray-900);
+}
+
+.product-hero-subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+.product-hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.product-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-lg);
+    transition: var(--transition);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-hero.vocalia .product-cta-primary {
+    background: var(--vocalia-gradient);
+}
+
+.product-hero.vocalia .product-cta-primary:hover {
+    box-shadow: var(--shadow-vocalia);
+    transform: translateY(-2px);
+}
+
+.product-hero.meetia .product-cta-primary {
+    background: var(--meetia-gradient);
+}
+
+.product-hero.meetia .product-cta-primary:hover {
+    box-shadow: var(--shadow-meetia);
+    transform: translateY(-2px);
+}
+
+.product-hero.kinesia .product-cta-primary {
+    background: var(--kinesia-gradient);
+}
+
+.product-hero.kinesia .product-cta-primary:hover {
+    box-shadow: var(--shadow-kinesia);
+    transform: translateY(-2px);
+}
+
+.product-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    background: white;
+    color: var(--gray-900);
+    text-decoration: none;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-semibold);
+    font-size: var(--text-lg);
+    transition: var(--transition);
+}
+
+.product-cta-secondary:hover {
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-md);
+}
+
+.product-hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-demo-mockup {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    padding: var(--space-2xl);
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid var(--gray-200);
+}
+
+/* ============ PROBLÈME MÉTIER ============ */
+.problem-metier {
+    padding: var(--space-4xl) 0;
+    background: white;
+}
+
+.problem-metier-content {
+    max-width: var(--container-md);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.problem-metier-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: var(--gray-900);
+    margin-bottom: var(--space-lg);
+}
+
+.problem-metier-description {
+    font-size: var(--text-xl);
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: var(--space-2xl);
+}
+
+.problem-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+}
+
+.problem-stat {
+    text-align: center;
+}
+
+.problem-stat-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-md);
+}
+
+.problem-stat-value {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-xs);
+}
+
+.problem-stat-label {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+}
+
+/* ============ FONCTIONNEMENT ============ */
+.fonctionnement {
+    padding: var(--space-4xl) 0;
+    background: var(--gray-50);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+    max-width: var(--container-xl);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    border: 2px solid var(--gray-200);
+    position: relative;
+    transition: var(--transition);
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.step-number {
+    position: absolute;
+    top: -16px;
+    left: var(--space-xl);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-bold);
+    color: white;
+    font-size: var(--text-lg);
+}
+
+.vocalia .step-number { background: var(--vocalia-primary); }
+.meetia .step-number { background: var(--meetia-primary); }
+.kinesia .step-number { background: var(--kinesia-primary); }
+
+.step-icon {
+    font-size: 36px;
+    margin-bottom: var(--space-md);
+}
+
+.step-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-sm);
+    color: var(--gray-900);
+}
+
+.step-description {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+/* ============ FONCTIONNALITÉS ============ */
+.features-product {
+    padding: var(--space-4xl) 0;
+    background: white;
+}
+
+.features-grid-product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+    max-width: var(--container-lg);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-card-product {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.feature-icon-product {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.vocalia .feature-icon-product { background: var(--vocalia-light); }
+.meetia .feature-icon-product { background: var(--meetia-light); }
+.kinesia .feature-icon-product { background: var(--kinesia-light); }
+
+.feature-content-product {
+    flex: 1;
+}
+
+.feature-title-product {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-sm);
+    color: var(--gray-900);
+}
+
+.feature-description-product {
+    font-size: var(--text-base);
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* ============ DISCLAIMER (pour Kinésia) ============ */
+.disclaimer {
+    padding: var(--space-2xl);
+    background: var(--warning-light);
+    border: 2px solid var(--warning);
+    border-radius: var(--radius-lg);
+    margin: var(--space-3xl) auto;
+    max-width: var(--container-md);
+}
+
+.disclaimer-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--gray-900);
+    margin-bottom: var(--space-md);
+}
+
+.disclaimer-text {
+    font-size: var(--text-base);
+    color: var(--gray-700);
+    line-height: 1.6;
+}
+
+/* ============ CTA FINAL PRODUIT ============ */
+.product-final-cta {
+    padding: var(--space-4xl) 0;
+    text-align: center;
+}
+
+.product-final-cta.vocalia {
+    background: var(--vocalia-gradient);
+}
+
+.product-final-cta.meetia {
+    background: var(--meetia-gradient);
+}
+
+.product-final-cta.kinesia {
+    background: var(--kinesia-gradient);
+}
+
+.product-final-cta-title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    color: white;
+    margin-bottom: var(--space-lg);
+}
+
+.product-final-cta-subtitle {
+    font-size: var(--text-xl);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-final-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-2xl);
+    background: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    transition: var(--transition);
+    box-shadow: var(--shadow-xl);
+}
+
+.product-final-cta.vocalia .product-final-cta-button {
+    color: var(--vocalia-primary);
+}
+
+.product-final-cta.meetia .product-final-cta-button {
+    color: var(--meetia-primary);
+}
+
+.product-final-cta.kinesia .product-final-cta-button {
+    color: var(--kinesia-primary);
+}
+
+.product-final-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-2xl);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+    .product-hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+    
+    .product-hero-visual {
+        order: -1;
+    }
+    
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-grid-product {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-hero {
+        padding-top: 100px;
+    }
+    
+    .product-hero-title {
+        font-size: var(--text-4xl);
+    }
+    
+    .product-hero-subtitle {
+        font-size: var(--text-lg);
+    }
+    
+    .product-hero-cta {
+        flex-direction: column;
+    }
+    
+    .product-cta-primary,
+    .product-cta-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .problem-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-hero-title {
+        font-size: var(--text-3xl);
+    }
+}

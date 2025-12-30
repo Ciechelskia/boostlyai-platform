@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Questions Fréquentes | VOCALIA</title>
+    <meta name="description" content="Trouvez rapidement des réponses à vos questions sur VOCALIA - Génération automatique de rapports commerciaux par IA">
+    <link rel="stylesheet" href="css/legal-pages.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span style="font-size: 1.5rem;">🎤</span>
+                <span class="nav-title-gradient">VOCALIA</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html#features" class="nav-link" data-i18n="nav.features">Fonctionnalités</a></li>
+                <li><a href="index.html#demo" class="nav-link" data-i18n="nav.demo">Démo</a></li>
+                <li><a href="index.html#pricing" class="nav-link" data-i18n="nav.pricing">Tarifs</a></li>
+                <li><a href="faq.html" class="nav-link" data-i18n="nav.faq">FAQ</a></li>
+            </ul>
+
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <div class="language-selector">
+                    <button class="language-btn">🇫🇷 FR ▼</button>
+                    <div class="language-dropdown">
+                        <a href="#" class="language-option active" data-lang="fr">🇫🇷 Français</a>
+                        <a href="#" class="language-option" data-lang="en">🇬🇧 English</a>
+                        <a href="#" class="language-option" data-lang="zh">🇨🇳 中文</a>
+                        <a href="#" class="language-option" data-lang="ja">🇯🇵 日本語</a>
+                    </div>
+                </div>
+                <a href="login.html" class="btn-nav btn-outline" data-i18n="nav.login">Connexion</a>
+                <a href="register.html" class="btn-nav btn-gradient" data-i18n="nav.start">Commencer</a>
+            </div>
+
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="faq-container">
+        <div class="legal-header">
+            <h1 class="legal-title" data-i18n="faq.title">Questions Fréquentes</h1>
+            <p class="legal-subtitle" data-i18n="faq.subtitle">Trouvez rapidement des réponses à vos questions</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="faq-search">
+            <input type="text" class="search-input" id="faq-search" placeholder="Rechercher une question..." data-i18n-placeholder="faq.search_placeholder">
+        </div>
+
+        <!-- Categories -->
+        <div class="faq-categories">
+            <div class="category-card active" data-category="all">
+                <div class="category-icon">📚</div>
+                <div class="category-name" data-i18n="faq.all">Toutes</div>
+                <div class="category-count">30 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="pricing">
+                <div class="category-icon">💰</div>
+                <div class="category-name" data-i18n="faq.categories.pricing">Abonnement</div>
+                <div class="category-count">8 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="usage">
+                <div class="category-icon">🎤</div>
+                <div class="category-name" data-i18n="faq.categories.usage">Utilisation</div>
+                <div class="category-count">7 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="reports">
+                <div class="category-icon">📊</div>
+                <div class="category-name" data-i18n="faq.categories.reports">Rapports</div>
+                <div class="category-count">6 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="multilingual">
+                <div class="category-icon">🌍</div>
+                <div class="category-name" data-i18n="faq.categories.multilingual">Multilingue</div>
+                <div class="category-count">4 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="security">
+                <div class="category-icon">🔒</div>
+                <div class="category-name" data-i18n="faq.categories.security">Sécurité</div>
+                <div class="category-count">3 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+            <div class="category-card" data-category="technical">
+                <div class="category-icon">📱</div>
+                <div class="category-name" data-i18n="faq.categories.technical">Technique</div>
+                <div class="category-count">2 <span data-i18n="faq.questions">questions</span></div>
+            </div>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="faq-list">
+            
+            <!-- ========== ABONNEMENT & TARIFS ========== -->
+            
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q1.question">Quelle est la différence entre le plan FREE et PRO ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q1.answer">
+                        Le plan FREE limite à 5 rapports par mois, 1 seule langue, et n'inclut pas les dossiers ni la traduction automatique. Le plan PRO offre des rapports illimités, 6 langues, traduction automatique, système de dossiers, partage de rapports, et support prioritaire pour 49€/mois.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q2.question">Combien coûte VOCALIA ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q2.answer">
+                        VOCALIA propose 3 plans : FREE (0€/mois, 5 rapports max), PRO (49€/mois ou 490€/an, rapports illimités), et Entreprise (sur devis, à partir de 499€/mois avec fonctionnalités sur mesure).
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q3.question">Comment fonctionne la limite de 5 rapports du plan FREE ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q3.answer">
+                        Le compteur se réinitialise automatiquement le 1er de chaque mois. Une fois 5 rapports générés, vous verrez un message vous invitant à upgrader vers PRO pour continuer à créer des rapports.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q4.question">Puis-je passer du plan FREE au plan PRO à tout moment ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q4.answer">
+                        Oui, vous pouvez upgrader instantanément vers le plan PRO depuis votre tableau de bord. L'upgrade est immédiat et vous bénéficiez de toutes les fonctionnalités PRO dès le paiement effectué.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q5.question">Y a-t-il une réduction pour l'abonnement annuel ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q5.answer">
+                        Oui ! L'abonnement annuel PRO coûte 490€/an au lieu de 588€ (12 x 49€), soit une économie de 2 mois. Vous économisez environ 17% en payant annuellement.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q6.question">Puis-je annuler mon abonnement PRO à tout moment ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q6.answer">
+                        Oui, vous pouvez annuler à tout moment depuis vos paramètres. L'annulation prend effet à la fin de votre période de facturation en cours. Vous gardez l'accès aux fonctionnalités PRO jusqu'à cette date.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q7.question">Que se passe-t-il avec mes rapports si je repasse au plan FREE ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q7.answer">
+                        Tous vos rapports existants restent accessibles en consultation et téléchargement. Cependant, vous perdez l'accès aux dossiers personnalisés et à la traduction automatique. Vous ne pourrez créer que 5 nouveaux rapports par mois.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q8.question">Le plan Entreprise, c'est pour qui ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q8.answer">
+                        Le plan Entreprise est idéal pour les grandes organisations, réseaux de franchises ou multinationales. Il inclut le white-label, un agent IA personnalisé, des templates sur mesure, un support 24/7 dédié, et des intégrations CRM personnalisées. Contactez-nous pour un devis.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== UTILISATION & ENREGISTREMENT ========== -->
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q9.question">Comment créer mon premier rapport ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q9.answer">
+                        C'est très simple ! Connectez-vous, cliquez sur "Nouveau rapport", appuyez sur le bouton microphone rouge pour enregistrer votre visite client en parlant naturellement, puis cliquez sur "Stop" quand vous avez terminé. L'IA transcrit et génère automatiquement un rapport professionnel en quelques secondes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q10.question">Y a-t-il une durée maximale d'enregistrement ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q10.answer">
+                        Non, il n'y a pas de limite de durée d'enregistrement. Vous pouvez enregistrer aussi longtemps que nécessaire pour capturer l'intégralité de votre rendez-vous client. L'IA traite les enregistrements longs sans problème.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q11.question">Que sont les brouillons et comment fonctionnent-ils ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q11.answer">
+                        Les brouillons sont des enregistrements sauvegardés automatiquement avant d'être transformés en rapport final. Vous pouvez les éditer manuellement, ajouter des notes, puis les valider pour générer le rapport PDF. Cela vous permet de vérifier et modifier avant la génération finale.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q12.question">Puis-je mettre en pause un enregistrement en cours ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q12.answer">
+                        Oui, vous pouvez mettre en pause et reprendre un enregistrement à tout moment. L'enregistrement est sauvegardé automatiquement en brouillon, vous permettant de continuer plus tard ou de le finaliser quand vous êtes prêt.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q13.question">VOCALIA fonctionne-t-il hors ligne ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q13.answer">
+                        VOCALIA fonctionne partiellement hors ligne grâce à la technologie PWA (Progressive Web App). Vous pouvez enregistrer vos visites hors ligne, et les enregistrements seront synchronisés et traités automatiquement dès que vous retrouvez une connexion internet.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q14.question">Sur combien d'appareils puis-je utiliser VOCALIA ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q14.answer">
+                        Vous pouvez utiliser VOCALIA sur maximum 2 appareils (ordinateur, smartphone, tablette) avec le même compte. Vos données se synchronisent automatiquement entre vos appareils. Si vous avez besoin de plus d'appareils, contactez-nous pour le plan Entreprise.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="usage">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q15.question">Quelle qualité audio est recommandée ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q15.answer">
+                        L'IA fonctionne très bien avec l'audio standard d'un smartphone moderne. Pour de meilleurs résultats, évitez les environnements trop bruyants et parlez clairement. La visualisation en temps réel (waveform) vous aide à vérifier que le son est bien capté.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== RAPPORTS & FONCTIONNALITÉS ========== -->
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q16.question">Que contient un rapport généré par VOCALIA ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q16.answer">
+                        Chaque rapport inclut automatiquement : un titre généré intelligemment, un résumé exécutif, les points clés de la visite, les actions à suivre, et une conclusion. Le tout est structuré professionnellement et exportable en PDF immédiatement.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q17.question">Puis-je modifier un rapport après sa génération ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q17.answer">
+                        Oui, vous pouvez éditer manuellement les brouillons avant de les valider en rapport final. Une fois validé, le rapport PDF est figé, mais vous pouvez toujours le consulter, le télécharger ou le partager. Pour faire des modifications, créez un nouveau rapport.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q18.question">Comment fonctionnent les dossiers ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q18.answer">
+                        Les dossiers (disponibles en plan PRO uniquement) vous permettent d'organiser vos rapports par client, projet, date ou tout autre critère. Vous pouvez créer un nombre illimité de dossiers, leur attribuer des couleurs pour identification rapide, et les renommer ou supprimer à tout moment.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q19.question">Puis-je partager mes rapports avec mon équipe ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q19.answer">
+                        Oui, avec le plan PRO, vous pouvez partager vos rapports via un lien sécurisé. Vous pouvez également télécharger le PDF et l'envoyer par email. Le plan Entreprise offre des fonctionnalités de collaboration avancées avec partage d'équipe.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q20.question">Combien de temps mes rapports sont-ils conservés ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q20.answer">
+                        Vos rapports sont conservés indéfiniment tant que votre compte est actif. Le plan PRO offre un historique complet, tandis que le plan FREE conserve tous les rapports créés. Vous pouvez supprimer manuellement les rapports dont vous n'avez plus besoin.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="reports">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q21.question">Puis-je personnaliser le design de mes rapports ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q21.answer">
+                        Le plan PRO permet d'ajouter votre logo personnalisé sur les rapports PDF. Le plan Entreprise offre des templates de rapports entièrement personnalisables avec votre charte graphique, vos couleurs, et votre mise en page sur mesure.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== MULTILINGUE & TRADUCTION ========== -->
+
+            <div class="faq-item" data-category="multilingual">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q22.question">Quelles langues sont supportées par VOCALIA ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q22.answer">
+                        VOCALIA supporte 6 langues : Français, Anglais, Chinois simplifié, Japonais, Espagnol et Allemand. Le plan FREE vous limite à 1 langue (celle choisie à l'inscription), tandis que le plan PRO donne accès aux 6 langues avec traduction automatique.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="multilingual">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q23.question">Comment fonctionne la traduction automatique des rapports ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q23.answer">
+                        Avec le plan PRO, vous pouvez traduire automatiquement vos rapports dans n'importe laquelle des 6 langues supportées. La traduction génère un nouveau PDF traduit tout en conservant un lien vers le rapport original. Idéal pour les clients internationaux !
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="multilingual">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q24.question">Puis-je parler dans une langue et obtenir le rapport dans une autre ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q24.answer">
+                        Oui ! L'IA détecte automatiquement la langue de votre enregistrement. Avec le plan PRO, vous pouvez ensuite traduire le rapport généré dans n'importe quelle autre langue supportée. Par exemple, enregistrez en français et obtenez un rapport en anglais pour vos clients internationaux.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="multilingual">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q25.question">Comment changer la langue de l'interface VOCALIA ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q25.answer">
+                        La langue de l'interface est détectée automatiquement selon votre navigateur. Vous pouvez la changer à tout moment via le sélecteur de langue en haut à droite. Le changement est instantané et affecte toute l'interface de l'application.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== SÉCURITÉ & COMPTE ========== -->
+
+            <div class="faq-item" data-category="security">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q26.question">Mes données sont-elles sécurisées ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q26.answer">
+                        Oui, absolument. VOCALIA utilise Supabase Auth pour une authentification sécurisée avec mots de passe cryptés. Toutes vos données sont protégées par RLS (Row Level Security) garantissant l'isolation totale entre utilisateurs. Vos enregistrements et rapports ne sont jamais partagés ni utilisés pour entraîner l'IA.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="security">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q27.question">Ai-je besoin de confirmer mon email ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q27.answer">
+                        Oui, la confirmation d'email est obligatoire lors de l'inscription. Vous recevrez un email avec un lien de confirmation à cliquer. Cette mesure garantit la sécurité de votre compte et permet la récupération de mot de passe si nécessaire.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="security">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q28.question">Que se passe-t-il si je supprime mon compte ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q28.answer">
+                        Si vous supprimez votre compte, toutes vos données (enregistrements, rapports, brouillons, dossiers) sont définitivement supprimées de nos serveurs. Cette action est irréversible. Pensez à exporter vos rapports importants avant la suppression.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== TECHNIQUE ========== -->
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q29.question">Sur quels navigateurs VOCALIA fonctionne-t-il ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q29.answer">
+                        VOCALIA fonctionne sur tous les navigateurs modernes : Chrome, Firefox, Safari, et Edge (versions récentes). Pour une expérience optimale avec l'enregistrement audio, nous recommandons Chrome ou Firefox. VOCALIA est également disponible en application PWA installable sur mobile et desktop.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <span class="faq-question-text" data-i18n="faq.q30.question">Qu'est-ce que la PWA et comment l'installer ?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content" data-i18n="faq.q30.answer">
+                        PWA (Progressive Web App) permet d'installer VOCALIA comme une vraie application sur votre smartphone ou ordinateur. Sur mobile, cliquez sur "Ajouter à l'écran d'accueil" dans le menu de votre navigateur. Sur desktop, Chrome et Edge proposent un bouton "Installer" dans la barre d'adresse. L'app installée charge ultra-rapidement et fonctionne partiellement hors ligne.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3 data-i18n="faq.no_results">Aucun résultat</h3>
+            <p data-i18n="faq.no_results_desc">Essayez avec d'autres mots-clés</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="nav-title-gradient">VOCALIA</h4>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                        Du code et de l'IA pour donner vie à vos rapports commerciaux
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.product">Produit</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#features" data-i18n="footer.features">Fonctionnalités</a></li>
+                        <li><a href="index.html#pricing" data-i18n="footer.pricing">Tarifs</a></li>
+                        <li><a href="index.html" data-i18n="footer.application">Application</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.support">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#contact" data-i18n="footer.contact">Contact</a></li>
+                        <li><a href="index.html#documentation" data-i18n="footer.documentation">Documentation</a></li>
+                        <li><a href="faq.html" data-i18n="footer.faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.legal">Légal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html" data-i18n="footer.privacy">Confidentialité</a></li>
+                        <li><a href="terms.html" data-i18n="footer.terms">CGU</a></li>
+                        <li><a href="legal.html" data-i18n="footer.legal_notices">Mentions légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    © 2024 VOCALIA. <span data-i18n="footer.rights">Tous droits réservés</span>. 
+                    <span data-i18n="footer.made_with">Fait avec</span> ❤️ <span data-i18n="footer.in_france">en France</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/faq-interactive.js"></script>
+    <script src="js/translations-faq-complet.js"></script>
+</body>
+</html>
