@@ -1407,10 +1407,11 @@ body {
         text-overflow: ellipsis;
     }
     
-    /* ✅ MOBILE: Sélecteur langue prend toute la largeur */
-    #languageSelectorContainer {
-        grid-column: span 2;
-    }
+    /* ✅ MOBILE: Ordre des éléments avec CSS order pour navigation 2x2 */
+    #navBrouillon { order: 1; }  /* Ligne 1, colonne 1 */
+    #navRapports { order: 2; }   /* Ligne 1, colonne 2 */
+    #navProfil { order: 3; }     /* Ligne 2, colonne 1 */
+    #logoutBtn { order: 4; }     /* Ligne 2, colonne 2 */
     
     /* ✅ MOBILE: Section enregistrement ULTRA COMPACTE */
     .recording-section {
@@ -1534,6 +1535,76 @@ body {
     .audio-btn:active {
         transform: scale(0.95) !important;
         transition: transform 0.1s ease !important;
+    }
+    
+    /* ✅ MOBILE: Cartes rapports ULTRA COMPACTES */
+    .report-card {
+        margin-bottom: 12px !important;
+    }
+    
+    /* Afficher le bouton toggle (3 points) sur mobile */
+    .mobile-toggle-btn {
+        display: inline-block !important;
+    }
+    
+    /* Masquer le contenu du rapport par défaut */
+    .report-card .report-content {
+        display: none !important;
+    }
+    
+    /* Masquer les boutons sauf Voir et PDF par défaut */
+    .report-card .share-btn,
+    .report-card .move-btn,
+    .report-card .delete-btn {
+        display: none !important;
+    }
+    
+    /* Quand expanded, afficher tout */
+    .report-card.expanded .report-content {
+        display: block !important;
+    }
+    
+    .report-card.expanded .share-btn,
+    .report-card.expanded .move-btn,
+    .report-card.expanded .delete-btn {
+        display: inline-flex !important;
+    }
+    
+    /* Header du rapport plus compact */
+    .report-card .report-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Titre plus compact */
+    .report-card .report-title {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+    
+    /* Date plus petite */
+    .report-card .report-date {
+        font-size: 11px !important;
+        white-space: nowrap !important;
+    }
+    
+    /* Actions plus compactes */
+    .report-card .report-actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        margin-top: 10px !important;
+    }
+    
+    .report-card .action-btn {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+        margin: 0 !important;
     }
     
     /* Rapports mobile */

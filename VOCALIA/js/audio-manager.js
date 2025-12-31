@@ -57,10 +57,12 @@ class AudioManager {
         // ✅ BOUTON UPLOAD - Support desktop + mobile
         if (this.uploadBtn) {
             this.uploadBtn.addEventListener('click', () => this.audioFileInput.click());
-            this.uploadBtn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
+            // Mobile : on laisse le click se propager naturellement
+            this.uploadBtn.addEventListener('touchend', (e) => {
+                // touchend au lieu de touchstart pour éviter les conflits
+                // Pas de preventDefault ici pour permettre le click natif
                 this.audioFileInput.click();
-            }, { passive: false });
+            }, { passive: true });
         }
 
         // ✅ INPUT FICHIER - Fonctionne identique desktop/mobile

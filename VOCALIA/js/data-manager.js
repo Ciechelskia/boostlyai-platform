@@ -1951,12 +1951,19 @@ async translateRapport(rapportId) {
         const pdfIndicator = rapport.hasPdf ? '📄' : '';
         
         return `
-            <div class="report-item" onclick="window.dataManager.viewRapport('${rapport.id}')">
+            <div class="report-item report-card" id="report-${rapport.id}">
                 <div class="report-header">
                     <div class="report-title">
                         ${sourceIcon} ${pdfIndicator} ${Utils.escapeHtml(rapport.title)}
                     </div>
                     <div class="report-date">Validé le ${dateValidated}</div>
+                    
+                    <!-- Bouton toggle mobile (3 points) -->
+                    <button 
+                        class="mobile-toggle-btn" 
+                        onclick="event.stopPropagation(); this.closest('.report-card').classList.toggle('expanded');"
+                        style="display: none; background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px 8px; color: var(--gray-600);"
+                    >⋮</button>
                 </div>
                 
                 <div class="report-content">${Utils.escapeHtml(truncatedContent)}</div>
@@ -1982,7 +1989,7 @@ async translateRapport(rapportId) {
                     </button>
                     
                     <button class="action-btn delete-btn" 
-                            onclick="event.stopPropagation(); window.dataManager.deleteRapport('${rapport.id}')"
+                            onclick="event.stopPropagation(); (async () => { await window.dataManager.deleteRapport('${rapport.id}'); })();"
                             style="background: #ef4444; color: white;">
                         🗑️ Supprimer
                     </button>
