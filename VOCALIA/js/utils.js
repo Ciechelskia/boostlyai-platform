@@ -761,6 +761,12 @@ class Utils {
             return 'free';
         }
         
+        // ✅ OPTIMISATION : Lire depuis la mémoire (chargé à la connexion)
+        // Au lieu de faire un appel Supabase à chaque fois
+        console.log('✅ Plan utilisateur (depuis mémoire):', currentUser.subscription_plan);
+        return currentUser.subscription_plan || 'free';
+        
+        /* ANCIEN CODE QUI CAUSAIT LE FREEZE (désactivé) :
         try {
             const { data: profile, error } = await window.supabaseClient
                 .from('profiles')
@@ -774,6 +780,7 @@ class Utils {
             console.error('❌ Erreur vérification plan:', error);
             return 'free';
         }
+        */
     }
     
     /**
@@ -786,6 +793,17 @@ class Utils {
             return { canCreate: false, count: 0, limit: 5, isPro: false };
         }
         
+        // ✅ OPTIMISATION : Lire depuis la mémoire (chargé à la connexion)
+        const isPro = currentUser.subscription_plan === 'pro';
+        const count = currentUser.reports_this_month || 0;
+        const limit = isPro ? Infinity : 5;
+        const canCreate = isPro || count < limit;
+        
+        console.log('✅ Limite rapports (depuis mémoire):', { canCreate, count, limit, isPro });
+        
+        return { canCreate, count, limit, isPro };
+        
+        /* ANCIEN CODE QUI CAUSAIT LE FREEZE (désactivé) :
         try {
             const { data: profile, error } = await window.supabaseClient
                 .from('profiles')
@@ -798,13 +816,14 @@ class Utils {
             const isPro = profile.subscription_plan === 'pro';
             const count = profile.reports_this_month || 0;
             const limit = isPro ? Infinity : 5;
-            const canCreate = isPro || count < 5;
+            const canCreate = isPro || count < limit;
             
             return { canCreate, count, limit, isPro };
         } catch (error) {
             console.error('❌ Erreur vérification limite:', error);
-            return { canCreate: true, count: 0, limit: 5, isPro: false };
+            return { canCreate: false, count: 0, limit: 5, isPro: false };
         }
+        */
     }
     
     /**

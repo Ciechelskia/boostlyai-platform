@@ -22,12 +22,10 @@
             <div class="nav-products">
                 <a href="vocalia.html" class="product-nav-link vocalia">Vocalia</a>
                 <a href="meetia.html" class="product-nav-link meetia" style="font-weight: 600;">Meetia</a>
-                <a href="kinesia.html" class="product-nav-link kinesia">Kinésia</a>
             </div>
             
             <div class="nav-actions">
                 <a href="faq.html" style="text-decoration: none; color: var(--gray-700); font-size: var(--text-sm);">FAQ</a>
-                <a href="#demo" class="btn-demo">Voir démo</a>
             </div>
         </div>
     </nav>
@@ -57,14 +55,9 @@
                     </p>
                     
                     <div class="product-hero-cta">
-                        <a href="../MEETIA/login.html" class="product-cta-primary">
-                            <span>Essayer gratuitement</span>
-                            <span>→</span>
-                        </a>
-                        <a href="#demo" class="product-cta-secondary">
-                            <span>▶</span>
-                            <span>Voir la démo</span>
-                        </a>
+                        <button onclick="showComingSoonMessage()" class="product-cta-primary" style="cursor: pointer; border: none;">
+                            <span>⚙️ Bientôt disponible</span>
+                        </button>
                     </div>
                 </div>
                 
@@ -265,7 +258,7 @@
                     <span class="gradient-text">BOOSTLY AI</span>
                 </div>
                 <p class="footer-tagline">
-                    La suite d'agents IA vocaux qui transforme la parole en actions concrètes.
+                    La suite d'agents IA spécialisés qui automatise vos tâches répétitives.
                 </p>
             </div>
             
@@ -273,13 +266,11 @@
                 <h4>Produits</h4>
                 <a href="vocalia.html">Vocalia</a>
                 <a href="meetia.html">Meetia</a>
-                <a href="kinesia.html">Kinésia</a>
             </div>
             
             <div class="footer-section">
                 <h4>Support</h4>
                 <a href="faq.html">FAQ</a>
-                <a href="#demo">Démo</a>
                 <a href="mailto:contact@boostly.ai">Contact</a>
             </div>
             
@@ -297,7 +288,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();

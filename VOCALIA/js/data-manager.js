@@ -655,25 +655,23 @@ async confirmValidateBrouillon(brouillonId, selectedFolderId = null) {
                     .eq('id', brouillonId);
                 
                 if (currentUser && currentUser.subscription_plan === 'free') {
-                    const { data: profileData, error: fetchError } = await window.supabaseClient
-                        .from('profiles')
-                        .select('reports_this_month')
-                        .eq('id', userId)
-                        .single();
+                    // ✅ Incrémenter le compteur en mémoire (lecture locale rapide)
+                    const newCount = (currentUser.reports_this_month || 0) + 1;
+                    currentUser.reports_this_month = newCount;
                     
-                    if (!fetchError) {
-                        const newCount = (profileData.reports_this_month || 0) + 1;
-                        
+                    console.log(`✅ Compteur mis à jour en mémoire: ${newCount}/5`);
+                    
+                    // Mettre à jour aussi dans Supabase (en arrière-plan)
+                    try {
                         await window.supabaseClient
                             .from('profiles')
                             .update({ reports_this_month: newCount })
                             .eq('id', userId);
                         
-                        console.log(`✅ Compteur mis à jour: ${newCount}/5`);
-                        
-                        if (window.appManager?.profileManager) {
-                            await window.appManager.profileManager.loadProfile(userId);
-                        }
+                        console.log(`✅ Compteur synchronisé avec Supabase: ${newCount}/5`);
+                    } catch (updateError) {
+                        console.error('⚠️ Erreur sync compteur Supabase:', updateError);
+                        // Pas grave, on continue avec la valeur en mémoire
                     }
                 }
             } catch (error) {

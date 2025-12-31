@@ -95,9 +95,17 @@ class AppManager {
             
             if (event === 'TOKEN_REFRESHED') {
                 console.log('✅ Token Supabase rafraîchi automatiquement');
+                // Ne PAS re-login, juste logger le refresh
+                return;
             }
             
             if (event === 'SIGNED_IN' && session) {
+                // ✅ CORRECTION : Ne re-login QUE si pas déjà connecté
+                if (this.currentUser && this.currentUser.id === session.user.id) {
+                    console.log('✅ Utilisateur déjà connecté, skip re-login');
+                    return;
+                }
+                
                 console.log('✅ Session active, token valide jusqu\'à:', new Date(session.expires_at * 1000));
                 await this.handleSuccessfulLogin(session.user);
             } else if (event === 'SIGNED_OUT') {

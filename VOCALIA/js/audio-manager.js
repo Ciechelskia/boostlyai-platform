@@ -26,28 +26,55 @@ class AudioManager {
     }
 
     bindEvents() {
+        // ✅ BOUTON ENREGISTREMENT - Support desktop (click) + mobile (touchstart)
         if (this.recordBtn) {
             this.recordBtn.addEventListener('click', () => this.toggleRecording());
+            // Support tactile mobile
+            this.recordBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault(); // Empêche le click 300ms après
+                this.toggleRecording();
+            }, { passive: false });
         }
 
+        // ✅ BOUTON LECTURE - Support desktop + mobile
         if (this.playBtn) {
             this.playBtn.addEventListener('click', () => this.playRecording());
+            this.playBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.playRecording();
+            }, { passive: false });
         }
 
+        // ✅ BOUTON REFAIRE - Support desktop + mobile
         if (this.reRecordBtn) {
             this.reRecordBtn.addEventListener('click', () => this.resetRecording());
+            this.reRecordBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.resetRecording();
+            }, { passive: false });
         }
 
+        // ✅ BOUTON UPLOAD - Support desktop + mobile
         if (this.uploadBtn) {
             this.uploadBtn.addEventListener('click', () => this.audioFileInput.click());
+            this.uploadBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.audioFileInput.click();
+            }, { passive: false });
         }
 
+        // ✅ INPUT FICHIER - Fonctionne identique desktop/mobile
         if (this.audioFileInput) {
             this.audioFileInput.addEventListener('change', (e) => this.handleFileUpload(e));
         }
 
+        // ✅ BOUTON ENVOYER - Support desktop + mobile
         if (this.sendAudioBtn) {
             this.sendAudioBtn.addEventListener('click', () => this.sendAudio());
+            this.sendAudioBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.sendAudio();
+            }, { passive: false });
         }
     }
 

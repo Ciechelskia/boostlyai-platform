@@ -1393,29 +1393,47 @@ body {
     .nav-buttons {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* ✅ MOBILE: 2x2 layout */
         gap: 8px;
         margin-top: 8px;
     }
     
     .nav-btn {
-        padding: 8px 12px;
-        font-size: 12px;
+        padding: 10px 12px;
+        font-size: 13px;
         text-align: center;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
     
-    .nav-btn.logout,
+    /* ✅ MOBILE: Sélecteur langue prend toute la largeur */
     #languageSelectorContainer {
-        grid-column: span 1;
+        grid-column: span 2;
     }
     
-    /* Enregistrement mobile */
+    /* ✅ MOBILE: Section enregistrement ULTRA COMPACTE */
+    .recording-section {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+    }
+    
+    .recording-section h3 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    
+    /* Enregistrement mobile - Design minimaliste */
     .input-options {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 12px; /* Réduit de 20px à 12px */
+        margin: 0; /* Suppression des marges */
+    }
+    
+    .option-divider {
+        margin: 8px 0; /* Divider plus compact */
+        font-size: 12px;
+        color: var(--gray-400);
     }
     
     .option-divider::before,
@@ -1426,7 +1444,96 @@ body {
     }
     
     .option-group {
-        padding: 25px 20px;
+        padding: 16px 12px; /* ✅ Réduit de 25px 20px */
+        border-radius: 12px;
+    }
+    
+    .option-group h4 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    
+    /* ✅ Bouton micro COMPACT */
+    .record-button {
+        width: 56px !important; /* Réduit de 70px */
+        height: 56px !important;
+        font-size: 24px !important;
+        margin: 12px auto !important;
+        /* Amélioration tactile mobile */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+    }
+    
+    /* Feedback visuel au touch */
+    .record-button:active {
+        transform: scale(0.92) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    #recordingStatus {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+    
+    /* ✅ Bouton upload COMPACT */
+    .upload-btn {
+        padding: 12px 20px !important;
+        font-size: 14px !important;
+        margin: 12px auto !important;
+        display: block !important;
+        max-width: 100% !important;
+        /* Amélioration tactile mobile */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+    }
+    
+    .upload-btn:active {
+        transform: scale(0.97) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    #uploadStatus {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    
+    /* ✅ Bouton "Envoyer" COMPACT */
+    .send-btn {
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        margin-top: 16px !important;
+        /* Amélioration tactile mobile */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+    }
+    
+    .send-btn:active {
+        transform: scale(0.97) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    /* ✅ Contrôles audio COMPACTS */
+    .audio-controls {
+        gap: 8px !important;
+        margin-top: 12px !important;
+    }
+    
+    .audio-btn {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+        /* Amélioration tactile mobile */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+    }
+    
+    .audio-btn:active {
+        transform: scale(0.95) !important;
+        transition: transform 0.1s ease !important;
     }
     
     /* Rapports mobile */
