@@ -96,7 +96,10 @@
                         
                         <div class="option-group">
                             <h4 data-i18n="drafts.upload">Importer un fichier audio</h4>
-                            <input type="file" id="audioFileInput" accept="audio/*" style="display: none;">
+                            <!-- ✅ CORRECTION iOS : Spécifier explicitement tous les formats audio -->
+                            <input type="file" id="audioFileInput" 
+                                   accept="audio/mpeg,audio/mp3,audio/wav,audio/x-wav,audio/mp4,audio/m4a,audio/x-m4a,audio/aac,audio/ogg,audio/webm,audio/flac,audio/*" 
+                                   style="display: none;">
                             <button class="upload-btn" id="uploadBtn" data-i18n="drafts.upload.button">📁 Choisir un fichier</button>
                             <div id="uploadStatus"></div>
                         </div>
